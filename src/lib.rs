@@ -373,7 +373,8 @@ pub use crate::expr::{Arm, Label, PointerMutability, RangeLimits};
 #[cfg_attr(docsrs, doc(cfg(any(feature = "full", feature = "derive"))))]
 pub use crate::expr::{
     Expr, ExprBinary, ExprCall, ExprCast, ExprField, ExprIndex, ExprLit, ExprMacro, ExprMethodCall,
-    ExprParen, ExprPath, ExprReference, ExprStruct, ExprUnary, FieldValue, Index, Member,
+    ExprParen, ExprPath, ExprReference, ExprStruct, ExprUnary, FieldValue, Index,
+    LessThanBinaryExpr, Member,
 };
 #[cfg(any(feature = "full", feature = "derive"))]
 #[cfg_attr(docsrs, doc(cfg(feature = "full")))]
