@@ -267,6 +267,13 @@ ast_enum_of_structs! {
 }
 
 ast_struct! {
+    #[cfg_attr(docsrs, doc(cfg(feature = "full")))]
+    pub struct LessThanBinaryExpr #full {
+        pub expr: Expr,
+    }
+}
+
+ast_struct! {
     /// A slice literal expression: `[a, b, c, d]`.
     #[cfg_attr(docsrs, doc(cfg(feature = "full")))]
     pub struct ExprArray #full {
@@ -1235,6 +1242,18 @@ pub(crate) mod parsing {
         }
     }
 
+    #[cfg_attr(docsrs, doc(cfg(feature = "parsing")))]
+    impl Parse for LessThanBinaryExpr {
+        fn parse(input: ParseStream) -> Result<Self> {
+            less_than_binary_expr(
+                input,
+                #[cfg(feature = "full")]
+                AllowStruct(true),
+            )
+            .map(|expr| LessThanBinaryExpr { expr })
+        }
+    }
+
     #[cfg(feature = "full")]
     pub(super) fn parse_with_earlier_boundary_rule(input: ParseStream) -> Result<Expr> {
         let mut attrs = input.call(expr_attrs)?;
@@ -1495,6 +1514,17 @@ pub(crate) mod parsing {
             #[cfg(feature = "full")]
             allow_struct,
             Precedence::MIN,
+        )
+    }
+
+    pub(super) fn less_than_binary_expr(
+        input: ParseStream,
+        #[cfg(feature = "full")] allow_struct: AllowStruct,
+    ) -> Result<Expr> {
+        unary_expr(
+            input,
+            #[cfg(feature = "full")]
+            allow_struct,
         )
     }
 
