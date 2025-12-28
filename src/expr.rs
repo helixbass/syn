@@ -1193,7 +1193,7 @@ pub(crate) mod parsing {
     use crate::expr::{
         Expr, ExprBinary, ExprCall, ExprCast, ExprField, ExprGroup, ExprIndex, ExprLit, ExprMacro,
         ExprMethodCall, ExprParen, ExprPath, ExprReference, ExprStruct, ExprTuple, ExprUnary,
-        FieldValue, Index, Member,
+        FieldValue, Index, LessThanBinaryExpr, Member,
     };
     #[cfg(feature = "full")]
     use crate::generics::{self, BoundLifetimes};
