@@ -266,12 +266,12 @@ ast_enum_of_structs! {
     }
 }
 
-ast_struct! {
-    #[cfg_attr(docsrs, doc(cfg(feature = "full")))]
-    pub struct LessThanBinaryExpr #full {
-        pub expr: Expr,
-    }
+// ast_struct! {
+#[cfg_attr(docsrs, doc(cfg(feature = "full")))]
+pub struct LessThanBinaryExpr #full {
+    pub expr: Expr,
 }
+// }
 
 ast_struct! {
     /// A slice literal expression: `[a, b, c, d]`.
